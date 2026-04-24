@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <!-- Google Identity Services library -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <!-- Login button -->
+  <div id="login-section">
+    <div id="g_id_onload"
+      data-client_id="1001246148481-6t7o4ev2gato9eo0jb4s6mrre807a1i3.apps.googleusercontent.com"
+      data-callback="handleCredentialResponse"
+      data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+    <p id="error-msg" style="display:none; color:red;">
+      Access restricted to @ucr.edu accounts only.
+    </p>
+  </div>
+
+  <!-- Protected content (hidden until signed in) -->
+  <div id="member-area" style="display:none;">
+    <p id="welcome-msg"></p>
+    <button onclick="signOut()">Sign out</button>
+  </div>
+
+  <script src="login.js"> </script>
+
+</body>
+</html>
