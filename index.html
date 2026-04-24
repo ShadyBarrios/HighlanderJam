@@ -5,29 +5,44 @@
   <title>Login</title>
   <!-- Google Identity Services library -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+
+<body class="essentials">
 
   <!-- Login button -->
-  <div id="login-section">
-    <div id="g_id_onload"
-      data-client_id="1001246148481-6t7o4ev2gato9eo0jb4s6mrre807a1i3.apps.googleusercontent.com"
-      data-callback="handleCredentialResponse"
-      data-auto_prompt="false">
+  <div id="login-section" class="centercenter">
+    <div id="login-title-section">
+      <h1>Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
     </div>
-    <div class="g_id_signin" data-type="standard"></div>
-    <p id="error-msg" style="display:none; color:red;">
-      Access restricted to @ucr.edu accounts only.
-    </p>
+    <div id="login-button-section">
+      <p>Access restricted to @ucr.edu accounts only.</p>
+      <p>Students and faculty welcome!</p>
+      <button id="login-btn">
+        <svg width="18" height="18" viewBox="0 0 18 18">
+          <path fill="rgb(245, 246, 248)" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z"/>
+          <path fill="rgb(245, 246, 248)" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17z"/>
+          <path fill="rgb(245, 246, 248)" d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07z"/>
+          <path fill="rgb(245, 246, 248)" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3z"/>
+        </svg>
+      </button>
+      <p id="error-msg" style="display:none; color:indianred;">
+        Access restricted to @ucr.edu accounts only.
+      </p>
+    </div>
+    <div id="bottom-buffer"></div>
   </div>
 
   <!-- Protected content (hidden until signed in) -->
   <div id="member-area" style="display:none;">
     <p id="welcome-msg"></p>
-    <button onclick="signOut()">Sign out</button>
+    <button id="signout-btn">Sign out</button>
   </div>
 
-  <script src="login.js"> </script>
+  <script type="module" src="login.js"> </script>
 
 </body>
 </html>

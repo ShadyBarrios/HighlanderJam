@@ -1,0 +1,94 @@
+.essentials{
+    background-color: rgb(65, 84, 151);
+    color: rgb(245, 246, 248);
+    font-family:'DM Mono', Courier, monospace
+}
+
+.centercenter{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#login-title-section{
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-button-section{
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-button-section p{
+    margin:0;
+}
+
+#login-button-section p+p{
+    margin-bottom:0.5rem;
+}
+
+#bottom-buffer {
+  height: 25vh;
+}
+
+/* IMPORTED FONT */
+.dm-mono-light {
+  font-family: "DM Mono", monospace;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.dm-mono-regular {
+  font-family: "DM Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-mono-medium {
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.dm-mono-light-italic {
+  font-family: "DM Mono", monospace;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.dm-mono-regular-italic {
+  font-family: "DM Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.dm-mono-medium-italic {
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  font-style: italic;
+}
+
+#login-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1rem;
+  padding: 12px 28px;
+  background: rgb(234, 179, 60);
+  color: #333;
+  border: 2px solid rgb(245, 246, 248);
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#login-btn:hover {
+  background: rgb(52, 68, 125);
+}
