@@ -11,6 +11,12 @@ onAuthStateChanged(auth, async (user) => {
         return;
     }
 
+    await initPage();
+
+    document.body.style.visibility = "visible";
+});
+
+async function initPage(){
     const q = query(
         collection(db, "postings"),
         where("uid", "==", user.uid),
@@ -47,9 +53,7 @@ onAuthStateChanged(auth, async (user) => {
         container.appendChild(card);
     });
     updatePageIndicator();
-
-    document.body.style.visibility = "visible";
-});
+}
 
 document.getElementById("postings-btn").addEventListener("click", () => {
     window.location.href = "../postings.html";

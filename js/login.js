@@ -12,10 +12,8 @@ onAuthStateChanged(auth, async (user) => {
     if (!userSnap.exists()) {
       await setDoc(userRef, {
         firstName: user.displayName.split(" ")[0],
-        fullName: user.displayName,
         email: user.email,
         uid: user.uid,
-        createdAt: serverTimestamp()
       });
     }
 
@@ -30,6 +28,7 @@ document.getElementById("login-btn").addEventListener("click", async () => {
     const email = result.user.email;
 
     if (!email.endsWith("@ucr.edu")) {
+      alert("This website is only accessible through UCR signin.");
       await signOut(auth);
     }
   } catch (error) {

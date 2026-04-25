@@ -7,7 +7,6 @@ const editId = params.get("id");
 
 let currentUser = null;
 
-
 onAuthStateChanged(auth, async (user) => {
     if (!user || !user.email.endsWith("@ucr.edu")) {
         localStorage.clear();
@@ -15,8 +14,12 @@ onAuthStateChanged(auth, async (user) => {
         return;
     }
 
-    currentUser = user;
+    await initPage();
 
+    document.body.style.visibility = "visible"; 
+});
+
+async function initPage(){
     // if editing, prefill the form
     if (editId) {
         document.getElementById("form-title").textContent = "Edit Posting";
@@ -32,11 +35,13 @@ onAuthStateChanged(auth, async (user) => {
         document.getElementById("experience").value = data.experience;
         }
     }
-
-    document.body.style.visibility = "visible"; 
-});
+}
 
 document.getElementById("cancel-btn").addEventListener("click", () => {
+  window.location.href = "profile.html";
+});
+
+document.getElementById("profile-btn").addEventListener("click", () => {
   window.location.href = "profile.html";
 });
 

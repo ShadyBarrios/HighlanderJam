@@ -11,6 +11,13 @@ onAuthStateChanged(auth, async (user) => {
         return;
     }
 
+    await initPage();
+    
+    document.body.style.visibility = "visible";
+});
+
+async function initPage(){
+    const user = auth.currentUser;
     const q = query(
         collection(db, "postings"),
         orderBy("createdAt", "desc")
@@ -40,9 +47,7 @@ onAuthStateChanged(auth, async (user) => {
         container.appendChild(card);
     });
     updatePageIndicator();
-    
-    document.body.style.visibility = "visible";
-});
+}
 
 document.getElementById("profile-btn").addEventListener("click", () => {
     window.location.href = "../profile.html";
