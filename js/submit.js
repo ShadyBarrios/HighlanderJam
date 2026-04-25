@@ -29,6 +29,7 @@ onAuthStateChanged(auth, async (user) => {
         document.getElementById("description").value = data.description;
         document.getElementById("instruments").value = data.instruments;
         document.getElementById("lookingFor").value = data.lookingFor;
+        document.getElementById("experience").value = data.experience;
         }
     }
 
@@ -47,6 +48,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
     const description = document.getElementById("description").value.trim();
     const lookingFor = document.getElementById("lookingFor").value;
     const instruments = document.getElementById("instruments").value.trim();
+    const experience = document.getElementById("experience").value;
 
     if (!title || !description || !instruments) {
         alert("Please fill in all fields.");
@@ -61,6 +63,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
             description,
             instruments,
             lookingFor,
+            experience
         });
         } else {
         // create new posting
@@ -69,6 +72,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
             description,
             instruments,
             lookingFor,
+            experience,
             postedBy: localStorage.getItem("firstName"),
             email: user.email,
             uid: user.uid,

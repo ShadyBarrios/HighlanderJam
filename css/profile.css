@@ -1,0 +1,16 @@
+
+.add-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: rgb(245, 246, 248);
+  cursor: pointer;
+  border: 2px dashed rgb(245, 246, 248);
+  min-height: 8rem;
+}
+
+.add-card:hover {
+  border-color: rgb(234, 179, 60);
+  color: rgb(234, 179, 60);
+}

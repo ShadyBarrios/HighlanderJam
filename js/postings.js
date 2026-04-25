@@ -2,6 +2,7 @@ import { db, auth } from "./firebase.js";
 import { collection, query, where, orderBy, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import { date, headerButtonEnum, getHeader, getDetails } from './utils.js'
+import { updatePageIndicator } from "./pagination.js";
 
 onAuthStateChanged(auth, async (user) => {
     if (!user || !user.email.endsWith("@ucr.edu")) {
@@ -38,6 +39,8 @@ onAuthStateChanged(auth, async (user) => {
 
         container.appendChild(card);
     });
+    updatePageIndicator();
+    
     document.body.style.visibility = "visible";
 });
 

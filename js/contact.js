@@ -38,7 +38,7 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 document.getElementById("cancel-send-btn").addEventListener("click", () => {
-  
+  window.location.href = "../postings.html";
 });
 
 document.getElementById("send-btn").addEventListener("click", async () => {

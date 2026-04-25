@@ -46,7 +46,9 @@ function getHeader(data, id, actions, uid){
 function getDetails(data){
     const details = `
     <p>${data.description}</p>
+    <br>
     <p>Instruments: ${data.instruments}</p>
+    <p>Experience Lvl: ${data.experience}</p>
     <span class="created-date">${date(data.createdAt)}</span>
     `
 

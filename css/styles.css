@@ -1,22 +1,11 @@
 .essentials{
   background-color: rgb(65, 84, 151);
   color: rgb(245, 246, 248);
-  font-family:'DM Mono', Courier, monospace
+  font-family:'DM Mono', Courier, monospace;
 }
 
 body{
   visibility:hidden;
-}
-
-.centercenter{
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-#bottom-buffer {
-  height: 40vh;
 }
 
 .nav-btn{
@@ -101,19 +90,29 @@ body{
 }
 
 .bottom-right{
-    position:fixed;
-    right:0;
-    bottom:0;
-    z-index:1000;
-    height:18em;
-    width:auto;
+  position:fixed;
+  right:0;
+  bottom:0;
+  display:inline-block;
+}
+
+.bottom-left{
+  position:fixed;
+  left:0;
+  bottom:0;
+  display:inline-block;
+}
+
+.bottom-left h4{
+  margin:0;
+  margin:0.3333rem;
 }
 
 #postings-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 0.5rem;
   width: 90%;
   margin: 0 auto;
 }
@@ -122,7 +121,6 @@ body{
   border: 1px solid rgb(245, 246, 248);
   border-radius: 8px;
   padding: 0.5rem;
-  padding-bottom: 2.5rem;
   min-height: 9rem;
   position: relative;
 
@@ -156,22 +154,6 @@ body{
   background:  rgb(234, 179, 60);
 }
 
-.add-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: rgb(245, 246, 248);
-  cursor: pointer;
-  border: 2px dashed rgb(245, 246, 248);
-  min-height: 8rem;
-}
-
-.add-card:hover {
-  border-color: rgb(234, 179, 60);
-  color: rgb(234, 179, 60);
-}
-
 .card-header {
   display: flex;
   align-items: center;
@@ -196,6 +178,7 @@ body{
   background: none;
   border: none;
   cursor: pointer;
+  color:rgb(245, 246, 248);
   font-size: 1.2rem;
   padding: 0.25rem;
 }
