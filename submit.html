@@ -22,7 +22,7 @@
         </div>
 
         <div id="top-bar-right">
-            <button class="nav-btn" id="postings-btn">All Postings</button>
+            <button class="nav-btn" id="profile-btn">To My Postings</button>
         </div>
     </div>
   <div id="form-container">
@@ -30,17 +30,17 @@
     <hr>
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" id="title" placeholder="e.g. Looking for a guitarist">
+      <input type="text" id="title" maxlength="40" placeholder="e.g. Looking for a guitarist">
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea id="description" rows="3" placeholder="Describe what you're looking for..."></textarea>
+      <textarea id="description" maxlength="160" rows="3" placeholder="Describe what you're looking for..."></textarea>
     </div>
 
     <div class="form-group">
       <label for="instruments">My Instrument(s)</label>
-      <textarea id="instruments" rows="1" placeholder="List your instrument(s); vocals count!"></textarea>
+      <textarea id="instruments" rows="1" maxlength="40" placeholder="List your instrument(s); vocals count!"></textarea>
     </div>
 
     <div class="form-group">
@@ -59,5 +59,6 @@
   </div>
 
   <script type="module" src="./js/submit.js"></script>
+  <script type="module" src="./js/postings.js"></script>
 </body>
 </html>

@@ -1,10 +1,26 @@
-import { auth, provider } from "./firebase.js";
+import { db, auth, provider } from "./firebase.js";
 import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
-onAuthStateChanged(auth, (user) => {
+document.body.style.visibility = "visible";
+
+onAuthStateChanged(auth, async (user) => {
   if (user) {
-    window.location.href = '../postings.html';
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        firstName: user.displayName.split(" ")[0],
+        fullName: user.displayName,
+        email: user.email,
+        uid: user.uid,
+        createdAt: serverTimestamp()
+      });
+    }
+
     localStorage.setItem("firstName", user.displayName.split(" ")[0]);
+    window.location.href = "postings.html";
   }
 });
 

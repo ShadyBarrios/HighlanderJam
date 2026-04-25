@@ -10,12 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/pagination.css">
 </head>
 
 <body class="essentials">
     <div id="top-bar">
         <div id="top-bar-left">
-            <h3 id="welcome-msg"></h3>
+            <span id="welcome-msg"></span><button id="signout-btn">Sign Out</button>
         </div>
 
         <div id="top-bar-center">
@@ -26,9 +27,20 @@
             <button class="nav-btn" id="profile-btn">To My Postings</button>
         </div>
     </div>
-    <button id="signout-btn">Sign out</button>
-    <script src="js/name.js"></script>
-    <script type="module" src="js/postings.js"></script>
+    <div id="postings-container"></div>
+    <div id="pagination">
+        <button id="prev-btn">←</button>
+        <span id="page-indicator">1 / 1</span>
+        <button id="next-btn">→</button>
+    </div>
+    <script>
+        const firstName = localStorage.getItem("firstName");
+        if (firstName) {
+            document.getElementById("welcome-msg").textContent = `Welcome, ${firstName} | `;
+        }
+    </script>
+    <script type="module" src="js/postings.js" ></script>
     <script type="module" src="js/signout.js"></script>  
+    <script type="module" src="js/pagination.js"></script>
 </body>
 </html>

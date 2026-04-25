@@ -1,6 +1,7 @@
 import { db, auth } from "./firebase.js";
 import { collection, query, where, orderBy, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { date, headerButtonEnum, getHeader, getDetails } from './utils.js'
 
 onAuthStateChanged(auth, async (user) => {
     if (!user || !user.email.endsWith("@ucr.edu")) {
@@ -14,9 +15,8 @@ onAuthStateChanged(auth, async (user) => {
         where("uid", "==", user.uid),
         orderBy("createdAt", "desc")
     );
-    console.log('here')
+
     const snapshot = await getDocs(q);
-    console.log('here2');
     const container = document.getElementById("postings-container");
 
     // + card always first
@@ -29,17 +29,11 @@ onAuthStateChanged(auth, async (user) => {
     snapshot.forEach((docSnap) => {
         const data = docSnap.data();
         const card = document.createElement("div");
+        const mode = user.uid == data.uid ? headerButtonEnum.AUTHOR : headerButtonEnum.CONTACT;
         card.classList.add("posting-card");
         card.innerHTML = `
-        <div class="card-header">
-            <h3>${data.title}</h3>
-            <div class="card-actions">
-            <button class="edit-btn" onclick="window.location.href='submit.html?id=${docSnap.id}'">✏️</button>
-            <button class="delete-btn" data-id="${docSnap.id}">✕</button>
-            </div>
-        </div>
-        <p>${data.description}</p>
-        <span>${data.postedBy}</span>
+        ${getHeader(data, docSnap.id, headerButtonEnum.AUTHOR)}
+        ${getDetails(data)}
         `;
 
         card.querySelector(".delete-btn").addEventListener("click", async () => {
@@ -51,8 +45,9 @@ onAuthStateChanged(auth, async (user) => {
 
         container.appendChild(card);
     });
-});
 
+    document.body.style.visibility = "visible";
+});
 
 document.getElementById("postings-btn").addEventListener("click", () => {
     window.location.href = "../postings.html";

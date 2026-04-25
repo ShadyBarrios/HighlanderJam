@@ -27,9 +27,12 @@ onAuthStateChanged(auth, async (user) => {
         const data = docSnap.data();
         document.getElementById("title").value = data.title;
         document.getElementById("description").value = data.description;
+        document.getElementById("instruments").value = data.instruments;
         document.getElementById("lookingFor").value = data.lookingFor;
         }
     }
+
+    document.body.style.visibility = "visible"; 
 });
 
 document.getElementById("cancel-btn").addEventListener("click", () => {

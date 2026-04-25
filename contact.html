@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Postings</title>
+  <title>Contact</title>
   <!-- Google Identity Services library -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/pagination.css">
+  <link rel="stylesheet" href="css/submit.css">
+  <link rel="stylesheet" href="css/contact.css">
 </head>
-
 <body class="essentials">
     <div id="top-bar">
         <div id="top-bar-left">
-            <span>My Postings | </span><button id="signout-btn">Sign Out</button>
+            <h3>Contact</h3>
         </div>
 
         <div id="top-bar-center">
@@ -26,14 +26,25 @@
             <button class="nav-btn" id="postings-btn">To All Postings</button>
         </div>
     </div>
-    <div id="postings-container"></div>
-    <div id="pagination">
-        <button id="prev-btn">←</button>
-        <span id="page-indicator">1 / 1</span>
-        <button id="next-btn">→</button>
+  <div id="form-container">
+    <h2 id="form-title">Send an email to </h2>
+    <hr>
+    <div class="form-group">
+      <label for="Message">Message</label>
+      <textarea id="message" maxlength="300" rows="5" placeholder="Introduce yourself!! Clicking send will open a Gmail window for confirmation."></textarea>
     </div>
-    <script type="module" src="js/profile.js"></script>
-    <script type="module" src="js/signout.js"></script>  
-    <script type="module" src="js/pagination.js"></script>
+
+    <div class="form-actions">
+      <button id="cancel-send-btn">Cancel</button>
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+  <script>
+        document.getElementById("postings-btn").addEventListener("click", () => {
+            window.location.href = "../postings.html";
+            return;
+        });
+    </script>
+  <script type="module" src="js/contact.js"></script>
 </body>
 </html>
