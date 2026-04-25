@@ -49,7 +49,7 @@ function getDetails(data){
     <br>
     <p>Instruments: ${data.instruments}</p>
     <p>Experience Lvl: ${data.experience}</p>
-    <span class="created-date">${date(data.createdAt)}</span>
+    <div class="created-date"><p>${date(data.createdAt)}</p></div>
     `
 
     return details    

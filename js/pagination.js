@@ -12,7 +12,7 @@ const countSnapshot = await getCountFromServer(collection(db, "postings"));
 const totalDocs = countSnapshot.data().count;
 totalPages = Math.ceil(totalDocs / POSTINGS_PER_PAGE);
 
-export function updatePageIndicator() {
+function updatePageIndicator() {
   if(totalPages > 0){
     currentPage = 1;
     document.getElementById("page-indicator").textContent = `${currentPage} / ${totalPages}`;
@@ -24,7 +24,7 @@ export function updatePageIndicator() {
   }
 }
 
-export function incrementPostingsCount() {
+function incrementPostingsCount() {
   postingCount++;
 }
 
@@ -39,3 +39,5 @@ document.getElementById("prev-btn").addEventListener("click", async () => {
   await loadPostings("prev");
   updatePageIndicator();
 });
+
+export { updatePageIndicator, incrementPostingsCount }
