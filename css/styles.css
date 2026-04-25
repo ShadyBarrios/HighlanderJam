@@ -1,0 +1,164 @@
+.essentials{
+  background-color: rgb(65, 84, 151);
+  color: rgb(245, 246, 248);
+  font-family:'DM Mono', Courier, monospace
+}
+
+
+.centercenter{
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#bottom-buffer {
+  height: 40vh;
+}
+
+.nav-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 9px 21px;
+  background: none;
+  color: rgb(245, 246, 248);
+  border: 2px solid rgb(245, 246, 248);
+  border-radius: 8px;
+  font-size: 1.25em; 
+  font-weight: 500; 
+  cursor: pointer;
+}
+
+
+.nav-btn:hover {
+  background: rgb(245, 246, 248);
+  color:rgb(65, 84, 151);
+}
+
+/* IMPORTED FONT */
+.dm-mono-light {
+  font-family: "DM Mono", monospace;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.dm-mono-regular {
+  font-family: "DM Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-mono-medium {
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.dm-mono-light-italic {
+  font-family: "DM Mono", monospace;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.dm-mono-regular-italic {
+  font-family: "DM Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.dm-mono-medium-italic {
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  font-style: italic;
+}
+
+#top-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 0.1em 0.75em;
+}
+
+#top-bar-left {
+  justify-self: start;
+}
+
+#top-bar-center {
+  justify-self: center;
+}
+
+#top-bar-right {
+  justify-self: end;
+}
+
+.bottom-right{
+
+    position:fixed;
+    right:0;
+    bottom:0;
+    z-index:1000;
+    height:18em;
+    width:auto;
+}
+
+#postings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.posting-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+
+.add-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #aaa;
+  cursor: pointer;
+  border: 2px dashed #ddd;
+  min-height: 120px;
+}
+
+.add-card:hover {
+  border-color: #003DA5;
+  color: #003DA5;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem;
+}
+
+.delete-btn:hover {
+  color: indianred;
+}
+
+.edit-btn:hover {
+  color: #003DA5;
+}

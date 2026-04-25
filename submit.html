@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit</title>
+  <!-- Google Identity Services library -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/submit.css">
+</head>
+<body class="essentials">
+    <div id="top-bar">
+        <div id="top-bar-left">
+            <h3>My Postings</h3>
+        </div>
+
+        <div id="top-bar-center">
+            <h1 onclick="window.location.href='postings.html'" style="cursor: pointer;">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
+        </div>
+
+        <div id="top-bar-right">
+            <button class="nav-btn" id="postings-btn">All Postings</button>
+        </div>
+    </div>
+  <div id="form-container">
+    <h2 id="form-title">New Posting</h2>
+    <hr>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" placeholder="e.g. Looking for a guitarist">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" rows="3" placeholder="Describe what you're looking for..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="instruments">My Instrument(s)</label>
+      <textarea id="instruments" rows="1" placeholder="List your instrument(s); vocals count!"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="lookingFor">Looking For</label>
+      <select id="lookingFor">
+        <option value="musician">Musician</option>
+        <option value="band">Band</option>
+        <option value="jam session">Jam Sesh</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button id="cancel-btn">Cancel</button>
+      <button id="submit-btn">Post</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/submit.js"></script>
+</body>
+</html>
