@@ -1,4 +1,5 @@
 import { db, provider, auth } from "./firebase.js";
+import { getDisplayName } from "./utils.js";
 import { collection, addDoc, getDoc, updateDoc, doc, serverTimestamp, query } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { signInWithPopup, onAuthStateChanged, GoogleAuthProvider} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
@@ -51,9 +52,9 @@ async function initPage() {
   const userDoc = await getDoc(doc(db, "users", uid));
   if (userDoc.exists()) {
     recipient = userDoc.data();
-    const firstName = recipient.firstName;
-    document.getElementById("form-title").textContent = firstName
-      ? `Send an email to ${firstName}!`
+    const displayName = getDisplayName(recipient.displayName);
+    document.getElementById("form-title").textContent = displayName
+      ? `Send an email to ${displayName}!`
       : "Send an email to this highlander!";
   } else {
     alert("There's been an error. Code WUT.");
@@ -71,7 +72,7 @@ document.getElementById("send-btn").addEventListener("click", async () => {
     return;
   }
 
-  const confirmed = confirm(`Send this message to ${recipient.firstName || "this highlander"}?\n\n"${message}"`);
+  const confirmed = confirm(`Send this message to ${recipient.firstName || "this highlander"}?"`);
   if (!confirmed) return;
 
   try {
@@ -94,7 +95,7 @@ document.getElementById("send-btn").addEventListener("click", async () => {
 
 function sendEmail() {
   const message = document.getElementById("message").value.trim();
-  const senderName = localStorage.getItem("firstName") || "A Highlander";
+  const senderName = localStorage.getItem("displayName") || "A Highlander";
   const subject = `Highlander Jam: Message from ${senderName}`;
 
   // build RFC 2822 email string

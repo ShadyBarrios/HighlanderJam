@@ -55,4 +55,14 @@ function getDetails(data){
     return details    
 }
 
-export{date, headerButtonEnum, getHeader, getDetails }
+function getDisplayName(fullName){
+    if(!fullName) return null;
+
+    const firstName = fullName.split(" ")[0];
+    const initialRegex = new RegExp("(?<= )[A-Z]"); // this'll only pull main last names (i.e. only "Cruz" from "de la Cruz")
+    const lastInitials = fullName.match(initialRegex).map(initial => `${initial}.`).join(" ");
+    const displayName = firstName.concat(" ", lastInitials);
+    return displayName;
+}
+
+export{date, headerButtonEnum, getHeader, getDetails, getDisplayName } 

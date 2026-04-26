@@ -1,4 +1,5 @@
 import { db, auth, provider } from "./firebase.js";
+import { getDisplayName } from "./utils.js";
 import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import { doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
@@ -8,16 +9,17 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     const userRef = doc(db, "users", user.uid);
     const userSnap = await getDoc(userRef);
+    const displayName = getDisplayName(user.displayName);
 
     if (!userSnap.exists()) {
       await setDoc(userRef, {
-        firstName: user.displayName.split(" ")[0],
+        displayName: displayName,
         email: user.email,
         uid: user.uid,
       });
     }
 
-    localStorage.setItem("firstName", user.displayName.split(" ")[0]);
+    localStorage.setItem("displayName", displayName);
     window.location.href = "postings.html";
   }
 });
