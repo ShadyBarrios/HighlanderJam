@@ -78,7 +78,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
             instruments,
             lookingFor,
             experience,
-            postedBy: localStorage.getItem("firstName"),
+            postedBy: localStorage.getItem("displayName"),
             email: user.email,
             uid: user.uid,
             createdAt: serverTimestamp()

@@ -118,7 +118,7 @@ body{
 }
 
 .posting-card {
-  border: 1px solid rgb(245, 246, 248);
+  border: 2px solid rgb(245, 246, 248);
   border-radius: 8px;
   padding: 0.5rem;
   min-height: 9rem;
@@ -145,7 +145,7 @@ body{
   top:0.75rem;
   background: none;
   color: rgb(245, 246, 248);
-  border: 2px solid rgb(245, 246, 248);
+  border: 1px solid rgb(245, 246, 248);
   border-radius: 8px;
   padding: 0.372em 0.75em;
   cursor: pointer;

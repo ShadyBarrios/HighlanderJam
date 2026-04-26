@@ -40,18 +40,21 @@ async function updatePage(currPage) {
         const data = docSnap.data();
         const card = document.createElement("div");
         const mode = uid == data.uid ? headerButtonEnum.AUTHOR : headerButtonEnum.CONTACT;
+        // const mode = headerButtonEnum.CONTACT;
         card.classList.add("posting-card");
         card.innerHTML = `
-            ${getHeader(data, docSnap.id, headerButtonEnum.AUTHOR)}
+            ${getHeader(data, docSnap.id, mode, data.uid)}
             ${getDetails(data)}
         `;
-        card.querySelector(".delete-btn").addEventListener("click", async () => {
+        if(mode == headerButtonEnum.AUTHOR){
+            card.querySelector(".delete-btn").addEventListener("click", async () => {
             if (confirm("Delete this posting?")) {
                 await deleteDoc(doc(db, "postings", docSnap.id));
                 card.remove();
                 await refreshPage();
             }
         });
+        }
         container.appendChild(card);
     });
 }

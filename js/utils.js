@@ -15,6 +15,7 @@ const headerButtonEnum = Object.freeze({
 });
 
 function getHeader(data, id, actions, uid){
+    // actions = headerButtonEnum.CONTACT;
     if(actions == headerButtonEnum.AUTHOR){
         return `
                 <div class="card-header">

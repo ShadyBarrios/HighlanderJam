@@ -34,9 +34,9 @@
         <button id="next-btn">→</button>
     </div>
     <script>
-        const firstName = localStorage.getItem("firstName");
-        if (firstName) {
-            document.getElementById("welcome-msg").textContent = `Welcome, ${firstName} | `;
+        const displayName = localStorage.getItem("displayName");
+        if (displayName) {
+            document.getElementById("welcome-msg").textContent = `Welcome, ${displayName} | `;
         }
     </script>
     <!-- <script type="module" src="js/pagination.js"></script> -->
