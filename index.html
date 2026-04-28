@@ -44,8 +44,10 @@
   <div class="animated-background" id="animated-background"></div>
   <script src="js/background.js"></script>
   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        addNotesClustered();
+        document.body.style.visibility = "hidden";
+        document.addEventListener('DOMContentLoaded', function() {
+          addNotesClustered();
+          document.body.style.visibility = "visible";
       });
   </script>
 
