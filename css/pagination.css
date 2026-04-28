@@ -7,6 +7,58 @@
 }
 
 #page-indicator {
-  font-size: 0.9rem;
   color: rgb(245, 246, 248);
+}
+
+#prev-btn, #next-btn{
+  background:none;
+  border-color:rgb(245, 246, 248);
+  color:rgb(245, 246, 248);
+  cursor:pointer;
+}
+
+#prev-btn:hover, #next-btn:hover{
+  border-color:  rgb(234, 179, 60);
+  color: rgb(234, 179, 60);
+}
+
+/* DESKTOP */
+@media screen and (min-width: 768px) {
+  #page-indicator{
+    font-size: 1rem;
+  }
+
+  #next-btn{
+    width:1.5em;
+    height:1.5em;
+    font-size:1.5em;
+  }
+
+  #prev-btn{
+    width:1.5em;
+    height:1.5em;
+    font-size:1.5em;
+  }
+
+}
+
+/* PHONE */
+@media screen and (max-width: 767px) {
+  #page-indicator{
+    font-size: 1.25rem;
+  }
+
+  #next-btn{
+    width:1.6em;
+    height:1.6em;
+    font-size:1.6em;
+    cursor:pointer;
+  }
+
+  #prev-btn{
+    width:1.6em;
+    height:1.6em;
+    font-size:1.6em;
+    cursor:pointer;
+  }
 }

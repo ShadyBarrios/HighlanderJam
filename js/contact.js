@@ -2,6 +2,7 @@ import { db, provider, auth } from "./firebase.js";
 import { getDisplayName } from "./utils.js";
 import { collection, addDoc, getDoc, updateDoc, doc, serverTimestamp, query } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { signInWithPopup, onAuthStateChanged, GoogleAuthProvider} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { navigateTo } from "./loadModule.js"; 
 
 let recipient = null;
 let tokenClient = null;
@@ -16,7 +17,7 @@ let authRan = false;
 onAuthStateChanged(auth, async (user) => {
   if (!user || !user.email.endsWith("@ucr.edu")) {
     localStorage.clear();
-    window.location.href = "../index.html";
+    navigateTo("../index.html");
     return;
   }
   authRan = true;
@@ -45,7 +46,7 @@ window.addEventListener("load", () => {
 });
 
 document.getElementById("cancel-send-btn").addEventListener("click", () => {
-  window.location.href = "../postings.html";
+  navigateTo("../postings.html");
 });
 
 async function initPage() {
@@ -58,7 +59,7 @@ async function initPage() {
       : "Send an email to this highlander!";
   } else {
     alert("There's been an error. Code WUT.");
-    window.location.href = "../index.html";
+    navigateTo("../index.html");
   }
 }
 
@@ -123,7 +124,7 @@ function sendEmail() {
   })
     .then((res) => {
       if (res.ok) {
-        window.location.href = "../postings.html";
+        navigateTo("../postings.html");
       } else {
         return res.json().then((err) => {
           console.error("Gmail API error:", err);

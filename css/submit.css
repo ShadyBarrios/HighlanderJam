@@ -1,8 +1,9 @@
 
 #form-container {
-  max-width: 50%;
   margin: 0.25rem auto;
-  padding: 0 1.5rem;
+  padding: 1.5rem;
+  padding-top:0;
+  margin-top:0;
 }
 
 h2 {
@@ -18,7 +19,6 @@ h2 {
 }
 
 label {
-  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -72,4 +72,34 @@ input:focus, textarea:focus, select:focus {
 
 #cancel-btn:hover{
     background: #d64848;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 767px) {
+  #form-container {
+    max-width: 60%;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+}
+
+/* PHONE */
+@media screen and (max-width: 767px) {
+  #form-container {
+    max-width: 95%;
+    font-size:1.2em;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+
+  #cancel-btn, #submit-btn {
+    padding: 0.65em 1.25em;
+    font-size: 0.95em; 
+    font-weight:500;
+  }
+
 }

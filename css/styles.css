@@ -1,3 +1,4 @@
+/* ALL */
 .essentials{
   background-color: rgb(65, 84, 151);
   color: rgb(245, 246, 248);
@@ -6,23 +7,24 @@
 
 body{
   visibility:hidden;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .nav-btn{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 9px 21px;
   background: none;
   color: rgb(245, 246, 248);
   border: 2px solid rgb(245, 246, 248);
   border-radius: 8px;
-  font-size: 1.25em; 
-  font-weight: 500; 
   cursor: pointer;
 }
-
 
 .nav-btn:hover {
   background: rgb(245, 246, 248);
@@ -68,17 +70,11 @@ body{
 
 #top-bar {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  padding: 0.1em 0.75em;
 }
 
 #top-bar-left {
   justify-self: start;
-}
-
-#top-bar-left span{
-  font-size: 1.17em; margin-top: 1em; margin-bottom: 1em; font-weight: 600;
 }
 
 #top-bar-center {
@@ -103,25 +99,13 @@ body{
   display:inline-block;
 }
 
-.bottom-left h4{
-  margin:0;
-  margin:0.3333rem;
-}
-
 #postings-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  padding: 0.5rem;
-  width: 90%;
-  margin: 0 auto;
 }
 
 .posting-card {
   border: 2px solid rgb(245, 246, 248);
   border-radius: 8px;
-  padding: 0.5rem;
-  min-height: 9rem;
   position: relative;
 
   overflow: hidden;
@@ -130,41 +114,43 @@ body{
 }
 
 .created-date {
-  display:block;
-  width:90%;
   text-align:right;
-  position:absolute;
-  right:0.75rem;
-  bottom:0.75rem;
 }
 
-.contact-btn {
-  display:flex;
-  position:absolute;
-  right:0.75rem;
-  top:0.75rem;
+.contact-btn, .edit-btn, .delete-btn {
   background: none;
   color: rgb(245, 246, 248);
   border: 1px solid rgb(245, 246, 248);
   border-radius: 8px;
-  padding: 0.372em 0.75em;
+  border-width:2px;
   cursor: pointer;
-  font-weight:700;
 }
 
-.contact-btn:hover{
+.contact-btn:hover, .edit-btn:hover{
   background:  rgb(234, 179, 60);
 }
 
 .card-header {
-  display: flex;
-  align-items: center;
+  display: block;
+  text-align:left;
+}
+
+.card-footer{
+  display:flex;
+  align-items:center;
   justify-content: space-between;
+  border-top-width:2px;
+  border-top-style:groove;
+}
+
+.card-actions{
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .posting-card h3{
   margin:0;
-  margin-top:0.25rem;
 }
 
 .posting-card p{
@@ -176,21 +162,8 @@ body{
   gap: 0.5rem;
 }
 
-.edit-btn, .delete-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color:rgb(245, 246, 248);
-  font-size: 1.2rem;
-  padding: 0.25rem;
-}
-
 .delete-btn:hover {
-  color: #d64848;
-}
-
-.edit-btn:hover {
-  color: rgb(234, 179, 60);
+  background-color: #d64848;
 }
 
 #signout-btn{
@@ -198,7 +171,6 @@ body{
   color: rgb(245, 246, 248);
   border: 2px solid rgb(245, 246, 248);
   border-radius: 8px;
-  padding: 0.372em 0.75em;
   cursor: pointer;
   font-weight:700;
 }
@@ -206,4 +178,156 @@ body{
 #signout-btn:hover{
   background-color: #d64848;
   border-color: #d64848;
+}
+
+.welcome-text, .desc-text, .looking-for{
+  text-align:center;
+}
+
+/* DESKOP */
+@media screen and (min-width: 768px) {
+  .nav-btn{
+    gap: 10px;
+    padding: 9px 21px;
+    font-size: 1.25em; 
+    font-weight: 500; 
+  }
+
+  #top-bar {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0.1em 0.75em;
+  }
+
+  #top-bar-left span{
+    font-size: 1.17em; margin-top: 1em; margin-bottom: 1em; font-weight: 600;
+  }
+
+  .bottom-left h4{
+    font-size:1.1em;
+    margin:0;
+    margin:0.3333rem;
+  }
+
+  .bottom-right{
+    height:11em;
+  }
+
+  #postings-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .posting-card {
+    padding: 0.5rem;
+    min-height: 9rem;
+  }
+
+  .contact-btn, .edit-btn, .delete-btn {
+    padding: 0.372em 0.75em;
+    font-size:1.1em;
+    font-weight:700;
+  }
+
+  .posting-card h3{
+    margin-top:0.25rem;
+  }
+
+  #signout-btn{
+    padding: 0.372em 0.75em;
+    cursor: pointer;
+    font-weight:700;
+  }
+
+  .desc-text{
+    font-size:1.1em
+  }
+
+  .card-footer{
+    margin-top:0.5em;
+    padding-top:0.5em;
+  }
+}
+
+/* PHONE */
+@media screen and (max-width: 767px) {
+  .nav-btn{
+    gap: 10px;
+    padding: 9px 21px;
+    font-size: 1.25em; 
+    font-weight: 500; 
+  }
+
+  #top-bar {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0.1em 0.75em;
+  }
+
+
+  #top-bar-left span{
+    font-size: 1.17em; margin-top: 1em; margin-bottom: 1em; font-weight: 600;
+  }
+
+  .bottom-left h4{
+    font-size:0.75em;
+    margin:0;
+    margin:0.3333rem;
+  }
+
+  .bottom-right{
+    height:5em;
+  }
+
+  #postings-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+    margin: .235em auto;
+    width: 95%;
+  }
+
+  .posting-card {
+    padding: 0.5rem;
+    min-height:5rem;
+    font-size:0.8em;
+  }
+
+  .contact-btn, .edit-btn, .delete-btn {
+    padding-left: 0.372em 0.75em;
+    font-size:1.2em;
+    font-weight:500;
+  }
+
+  .posting-card h3{
+    margin-top:0,1rem;
+  }
+
+  #signout-btn{
+    padding: 0.372em 0.75em;
+    cursor: pointer;
+    font-weight:700;
+  }
+
+  #site-title{
+    font-size:2.5em;
+  }
+
+  .welcome-text{
+    font-size:1.2em;
+  }
+
+  .desc-text{
+    font-size:0.9em;
+  }
+
+  .looking-for{
+    font-size:1em;
+  }
+
+  .card-footer{
+    margin-top:0.5em;
+    padding-top:0.5em;
+  }
 }

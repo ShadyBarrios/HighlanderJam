@@ -1,32 +1,58 @@
+/* DESKOP */
+@media screen and (min-width: 768px) {
+  #login-btn {
+    gap: 10px;
+    margin-top: 1rem;
+    padding: 12px 28px;
+    font-size: 15px;
+  }
 
+  #login-title-section{
+    padding:3rem;
+  }
+
+  #login-button-section{
+    padding:1rem;
+  }
+}
+
+/* PHONE */
+@media screen and (max-width: 767px) {
+  #login-btn {
+    gap: 0.25em;
+    margin-top: 1.5em;
+    padding: 1em 2em;
+    font-size: 1.5em;
+  }
+
+  #login-title-section{
+    padding-top:2rem;
+  }
+
+  #login-button-section{
+    padding:1em;
+  }
+}
+
+/* ALL */
 #login-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 1rem;
-  padding: 12px 28px;
-  background: #eab33c;
+  background: rgba(234, 179, 60, 1);
   color: #333;
   border: 2px solid rgb(245, 246, 248);
   border-radius: 8px;
-  font-size: 15px;
   cursor: pointer;
 }
 
-#login-btn:hover {
-  background: rgb(52, 68, 125);
-}
-
 #login-title-section{
-  padding:3rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #login-button-section{
-  padding:1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,9 +60,13 @@
 }
 
 #login-button-section p{
-    margin:0;
+  margin:0;
 }
 
 #login-button-section p+p{
-    margin-bottom:0.5rem;
+  margin-bottom:0.5rem;
+}
+
+#login-btn:hover {
+  background: rgb(52, 68, 125);
 }

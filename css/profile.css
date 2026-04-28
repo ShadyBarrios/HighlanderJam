@@ -13,3 +13,14 @@
   border-color: rgb(234, 179, 60);
   color: rgb(234, 179, 60);
 }
+
+/* DESKOP */
+@media screen and (min-width: 768px) {
+}
+
+/* PHONE */
+@media screen and (max-width: 767px) {
+  .add-card{
+    font-size:3.5em;
+  }
+}

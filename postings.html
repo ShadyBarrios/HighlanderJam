@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Postings</title>
   <!-- Google Identity Services library -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/profile.css">
   <link rel="stylesheet" href="css/pagination.css">
+  <link rel="stylesheet" href="css/background.css">
 </head>
 
 <body class="essentials">
@@ -20,7 +22,7 @@
         </div>
 
         <div id="top-bar-center">
-            <h1 onclick="window.location.href='postings.html'" style="cursor: pointer;">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
+            <h1 id="site-title" onclick="navigateTo('postings.html')" style="cursor: pointer;" id="title">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
         </div>
 
         <div id="top-bar-right">
@@ -29,17 +31,28 @@
     </div>
     <div id="postings-container"></div>
     <div id="pagination">
-        <button id="prev-btn">←</button>
+        <button id="prev-btn"><</button>
         <span id="page-indicator">1 / 1</span>
-        <button id="next-btn">→</button>
+        <button id="next-btn">></button>
     </div>
+
+    <div class="animated-background" id="animated-background"></div>
+    <script src="js/background.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            addNotesNotClustered();
+        });
+    </script>
+    
+    <script src="js/load.js"></script>
+
     <script>
         const displayName = localStorage.getItem("displayName");
         if (displayName) {
             document.getElementById("welcome-msg").textContent = `Welcome, ${displayName} | `;
         }
     </script>
-    <!-- <script type="module" src="js/pagination.js"></script> -->
+    <script type="module" src="js/pagination.js"></script>
     <script type="module" src="js/postings.js" ></script>
     <script type="module" src="js/signout.js"></script>  
 </body>

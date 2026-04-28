@@ -1,6 +1,7 @@
 import { db, auth } from "./firebase.js";
 import { collection, addDoc, getDoc, updateDoc, doc, serverTimestamp, query } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { navigateTo } from "./loadModule.js"
 
 const params = new URLSearchParams(window.location.search);
 const editId = params.get("id");
@@ -10,7 +11,7 @@ let currentUser = null;
 onAuthStateChanged(auth, async (user) => {
     if (!user || !user.email.endsWith("@ucr.edu")) {
         localStorage.clear();
-        window.location.href = "../index.html";
+        navigateTo("../index.html");
         return;
     }
 
@@ -38,11 +39,11 @@ async function initPage(){
 }
 
 document.getElementById("cancel-btn").addEventListener("click", () => {
-  window.location.href = "profile.html";
+  navigateTo("profile.html");
 });
 
 document.getElementById("profile-btn").addEventListener("click", () => {
-  window.location.href = "profile.html";
+  navigateTo("profile.html");
 });
 
 document.getElementById("submit-btn").addEventListener("click", async () => {
@@ -85,7 +86,7 @@ document.getElementById("submit-btn").addEventListener("click", async () => {
         });
         }
 
-        window.location.href = "profile.html";
+        navigateTo("profile.html");
     } catch (error) {
         alert("Something went wrong. Please try again.");
         console.error(error);

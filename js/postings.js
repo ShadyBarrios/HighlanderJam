@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/fi
 import { collection, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { populatePage } from "./postcard.js"
 import { viewEnum, initPage, getPageCount, updatePageIndicator } from "./pagination.js"
+import { navigateTo } from "./loadModule.js"; 
 
 // i think on refresh this causes the page to go back to first
 const postingsPerPage = 6;
@@ -11,7 +12,7 @@ let currentPage = 1;
 onAuthStateChanged(auth, async (user) => {
     if (!user || !user.email.endsWith("@ucr.edu")) {
         localStorage.clear();
-        window.location.href = "../index.html";
+        navigateTo("../index.html");
         return;
     }
 
@@ -22,7 +23,7 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 document.getElementById("profile-btn").addEventListener("click", () => {
-    window.location.href = "../profile.html";
+    navigateTo("../profile.html");
     return;
 });
 

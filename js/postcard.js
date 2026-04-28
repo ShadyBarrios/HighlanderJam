@@ -2,6 +2,7 @@ import { date } from "./utils.js"
 import { db, auth } from "./firebase.js";
 import { viewEnum } from "./pagination.js"
 import { collection, query, where, orderBy, getDocs, deleteDoc, doc, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+import { navigateTo } from "./loadModule.js"; 
 
 const headerButtonEnum = Object.freeze({
   CONTACT: 'CONTACT',
@@ -14,24 +15,12 @@ function getHeader(data, id, actions, uid){
         return `
                 <div class="card-header">
                     <h3>${data.title}</h3>
-                    <div class="card-actions">
-                        <button class="edit-btn" onclick="window.location.href='submit.html?id=${id}'">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                            </svg>    
-                        </button>
-                        <button class="delete-btn" data-id="${id}">✕</button>
-                    </div>
                 </div>
                 `
     }else{
         return  `
                 <div class="card-header">
-                    <span>${data.postedBy} is looking for a <span style="color: rgb(234, 179, 60);">${data.lookingFor}</span>!
-                    <div class="card-actions">
-                        <button class="contact-btn" onclick="window.location.href='contact.html?uid=${uid}'">Contact</button>
-                    </div>
+                    <span class="looking-for">${data.postedBy} seeks a <span style="color: rgb(234, 179, 60);">${data.lookingFor}</span>!
                 </div>
                 <h3>${data.title}</h3>
         `
@@ -44,10 +33,31 @@ function getDetails(data){
     <br>
     <p>Instruments: ${data.instruments}</p>
     <p>Experience Lvl: ${data.experience}</p>
-    <div class="created-date"><p>${date(data.createdAt)}</p></div>
     `
 
     return details    
+}
+
+
+function getFooter(data, id, actions, uid){
+    if(actions == headerButtonEnum.AUTHOR){
+        return `
+                <div class="card-footer">
+                    <div class="card-actions">
+                        <button class="edit-btn" onclick="navigateTo('submit.html?id=${id}')">Edit</button>
+                        <button class="delete-btn" data-id="${id}">Del</button>
+                    </div>
+                    <div class="created-date"><p>${date(data.createdAt)}</p></div>  
+                </div>
+                `
+    }else{
+        return  `
+                <div class="card-footer">
+                    <button class="contact-btn" onclick="navigateTo('contact.html?uid=${uid}')">Contact</button>
+                    <div class="created-date"><p>${date(data.createdAt)}</p></div>      
+                </div>
+        `
+    }
 }
 
 async function refreshPage(postingsPerPage, currentPage, totalPages){
@@ -84,7 +94,7 @@ async function populatePage(view, postingsPerPage, currentPage) {
         const addCard = document.createElement("div");
         addCard.classList.add("posting-card", "add-card");
         addCard.textContent = "+";
-        addCard.onclick = () => window.location.href = "submit.html";
+        addCard.onclick = () => navigateTo("submit.html");
         container.appendChild(addCard);
     }
 
@@ -101,6 +111,7 @@ async function populatePage(view, postingsPerPage, currentPage) {
         card.innerHTML = `
             ${getHeader(data, docSnap.id, mode, data.uid)}
             ${getDetails(data)}
+            ${getFooter(data, docSnap.id, mode, data.uid)}
         `;
         if(mode == headerButtonEnum.AUTHOR){
             card.querySelector(".delete-btn").addEventListener("click", async () => {
@@ -115,4 +126,4 @@ async function populatePage(view, postingsPerPage, currentPage) {
     });
 }
 
-export { headerButtonEnum, getHeader, getDetails, populatePage }
+export { headerButtonEnum, populatePage }

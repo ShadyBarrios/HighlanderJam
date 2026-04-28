@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login</title>
   <!-- Google Identity Services library -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -10,16 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/background.css">
 </head>
 
 <body class="essentials">
   <!-- Login button -->
   <div id="login-section">
     <div id="login-title-section">
-      <h1>Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
+      <h1 id="site-title">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
     </div>
     <div id="login-button-section">
-      <p style="font-size:1.1em;text-align:center;">Access restricted to UCR accounts only.<br>Welcome!</p>
+      <p class="welcome-text">Access restricted to UCR accounts only.<br>Welcome!</p>
       <button id="login-btn">
         <!-- Google G logo -->
         <svg width="1.125em" height="1.125em" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -35,17 +37,22 @@
         <span style="font-size: 1.25em; font-weight: 500; color: #4285f4;">UCR</span>
       </button>
     </div>
-    <p style="font-size:1.1em;text-align:center">Interact with our musician community through postings!<br>Read others' and reach out -- or post your own.</p>
-    <p style="font-size:1.1em;text-align:center">This website is currently made for desktop experience. Mobile soon (?)</p>
-    <div class="bottom-left">
-      <h4>Made by The Guitar Club @ UCR, 2026</h4>
-    </div>
+    <p class="desc-text">Interact with our musician community through postings!<br>Read others' and reach out -- or post your own.</p>
+    <p class="desc-text">This website is currently made for desktop experience.<br>Mobile soon (?)</p>
   </div>
-  <img src="resources/images/ShadyWasHere.png" alt="icon" class="bottom-right" style="height:9em">
+
+  <div class="animated-background" id="animated-background"></div>
+  <script src="js/background.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        addNotesClustered();
+      });
+  </script>
+
+  <script src="js/load.js"></script>
+
+  <div class="bottom-left"><h4>Made by The Guitar Club @ UCR, 2026</h4></div>
+  <img src="resources/images/ShadyWasHere.png" alt="icon" class="bottom-right">
   <script type="module" src="js/login.js"> </script>
 </body>
-<!-- <footer>
-  <audio src="resources/sounds/Whip It!.mp3" id="WhipItAudio" style="visibility:hidden"></audio>
-  <button onclick="toggleAudio('WhipItAudio')" style="cursor:pointer"><img src="resources/images/ShadyWasHere.png" alt="icon" class="bottom-right" style="height:8em"></button>
-</footer> -->
 </html>

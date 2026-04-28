@@ -1,0 +1,69 @@
+/* Background animation */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, rgb(65, 84, 151) 0%, rgb(45, 60, 115) 100%);
+  overflow: hidden;
+}
+
+.floating-note {
+  position: absolute;
+  font-size: 24px;
+  color: rgb(234, 179, 60);
+  animation: float 15s linear infinite;
+  z-index: -1;
+}
+
+@keyframes float {
+  0%   { transform: translateY(100vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* Wave animation */
+/* .wave-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 350px; 
+  overflow: hidden;
+  z-index: -1;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path d="M0,160 C240,80 480,240 720,160 C960,80 1200,240 1440,160 L1440,320 L0,320 Z" fill="%23eab33c" fill-opacity="0.25"/></svg>');
+  background-size: 720px 100%;
+  animation: wave 20s linear infinite;
+}
+
+.wave:nth-of-type(2) {
+  bottom: 10px;
+  opacity: 0.5;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path d="M0,160 C240,280 480,40 720,160 C960,280 1200,40 1440,160 L1440,320 L0,320 Z" fill="%23eab33c" fill-opacity="0.2"/></svg>');
+  background-size: 720px 100%;
+  animation: wave 28s linear reverse infinite;
+}
+
+.wave:nth-of-type(3) {
+  bottom: 5px;
+  opacity: 0.35;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path d="M0,160 C360,60 720,260 1080,160 C1260,110 1380,140 1440,160 L1440,320 L0,320 Z" fill="%23eab33c" fill-opacity="0.15"/></svg>');
+  background-size: 720px 100%;
+  animation: wave 35s linear infinite;
+}
+
+@keyframes wave {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+} */

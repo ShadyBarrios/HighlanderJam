@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/fi
 import { collection, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { populatePage } from "./postcard.js"
 import { viewEnum, initPage, getPageCount, updatePageIndicator } from "./pagination.js"
+import { navigateTo } from "./loadModule.js"; 
 
 const postingsPerPage = 5;
 let currentPage = 1;
@@ -10,7 +11,7 @@ let currentPage = 1;
 onAuthStateChanged(auth, async (user) => {
     if (!user || !user.email.endsWith("@ucr.edu")) {
         localStorage.clear();
-        window.location.href = "../index.html";
+        navigateTo("../index.html");
         return;
     }
 
@@ -21,7 +22,7 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 document.getElementById("postings-btn").addEventListener("click", () => {
-    window.location.href = "../postings.html";
+    navigateTo("../postings.html");
 });
 
 document.getElementById("next-btn").addEventListener("click", async () => {

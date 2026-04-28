@@ -2,6 +2,7 @@ import { db, auth, provider } from "./firebase.js";
 import { getDisplayName } from "./utils.js";
 import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import { doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+import { navigateTo } from "./loadModule.js"; 
 
 document.body.style.visibility = "visible";
 
@@ -20,7 +21,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     localStorage.setItem("displayName", displayName);
-    window.location.href = "postings.html";
+    navigateTo("postings.html");
   }
 });
 

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact</title>
   <!-- Google Identity Services library -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -9,17 +10,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/submit.css">
   <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/background.css">
 </head>
 <body class="essentials">
     <div id="top-bar">
         <div id="top-bar-left">
-            <h3>Contact</h3>
+            <span>Contact | </span><button id="signout-btn">Sign Out</button>
         </div>
 
         <div id="top-bar-center">
-            <h1 onclick="window.location.href='postings.html'" style="cursor: pointer;">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
+            <h1 id="site-title" onclick="navigateTo('postings.html')" style="cursor: pointer;">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
         </div>
 
         <div id="top-bar-right">
@@ -39,6 +40,15 @@
       <button id="send-btn">Send</button>
     </div>
   </div>
+
+  <div class="animated-background" id="animated-background"></div>
+  <script src="js/background.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      addNotesNotClustered();
+      });
+  </script>
+  
   <script>
         document.getElementById("postings-btn").addEventListener("click", () => {
             window.location.href = "../postings.html";
@@ -46,5 +56,6 @@
         });
     </script>
   <script type="module" src="js/contact.js"></script>
+  <script type="module" src="js/signout.js"></script>
 </body>
 </html>
