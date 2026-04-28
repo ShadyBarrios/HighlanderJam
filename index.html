@@ -41,20 +41,28 @@
     <p class="desc-text">This website is currently made for desktop experience.<br>Mobile soon (?)</p>
   </div>
 
+  <div class="bottom-left"><h4>Made by The Guitar Club @ UCR, 2026</h4></div>
+  
+  <img src="resources/images/ShadyWasHere.png" onclick="toggleAudio()" style="cursor: pointer;" alt="icon" class="bottom-right">
+  <audio id="whipit" src="resources/sounds/Whip It!.mp3"></audio>
+
   <div class="animated-background" id="animated-background"></div>
-  <script src="js/background.js"></script>
+
   <script>
-        document.body.style.visibility = "hidden";
-        document.addEventListener('DOMContentLoaded', function() {
-          addNotesClustered();
-          document.body.style.visibility = "visible";
-      });
+    function toggleAudio() {
+      const audio = document.getElementById('whipit');
+      audio.paused ? audio.play() : audio.pause();
+    }
+
+    document.body.style.visibility = "hidden";
+      document.addEventListener('DOMContentLoaded', function() {
+        addNotesClustered();
+        document.body.style.visibility = "visible";
+    });
   </script>
 
+  <script src="js/background.js"></script>
   <script src="js/load.js"></script>
-
-  <div class="bottom-left"><h4>Made by The Guitar Club @ UCR, 2026</h4></div>
-  <img src="resources/images/ShadyWasHere.png" alt="icon" class="bottom-right">
   <script type="module" src="js/login.js"> </script>
 </body>
 </html>
