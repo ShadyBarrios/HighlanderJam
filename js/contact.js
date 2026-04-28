@@ -73,7 +73,7 @@ document.getElementById("send-btn").addEventListener("click", async () => {
     return;
   }
 
-  const confirmed = confirm(`Send this message to ${recipient.firstName || "this highlander"}?"`);
+  const confirmed = confirm(`Send this message to ${recipient.displayName || "this highlander"}?`);
   if (!confirmed) return;
 
   try {

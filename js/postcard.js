@@ -81,11 +81,21 @@ async function populatePage(view, postingsPerPage, currentPage) {
     }
 
     const uid = auth.currentUser.uid;
-    const q = query(
-        collection(db, "postings"),
-        where("uid", "==", uid),
-        orderBy("createdAt", "desc")
-    );
+
+    let q = null;
+    if(view === viewEnum.MY_POSTINGS){
+        q = query(
+            collection(db, "postings"),
+            where("uid", "==", uid),
+            orderBy("createdAt", "desc")
+        );
+    }else{
+        q = query(
+            collection(db, "postings"),
+            orderBy("createdAt", "desc")
+        );
+    }
+    
     const snapshot = await getDocs(q);
     const container = document.getElementById("postings-container");
     container.innerHTML = ""; // clear before re-rendering
