@@ -1,16 +1,35 @@
-import { db } from './firebase.js';
+import { db } from "./firebase.js";
 import { collection, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-import { updatePage } from './profile.js';
+import { populatePage } from "./postcard.js"
 
-const POSTINGS_PER_PAGE = 5;
-let currentPage = 1;
-let totalPages = 0;
+const viewEnum = Object.freeze({
+    ALL_POSTINGS: 'ALL_POSTINGS',
+    MY_POSTINGS: 'MY_POSTINGS'
+})
 
-const countSnapshot = await getCountFromServer(collection(db, "postings"));
-const totalDocs = countSnapshot.data().count;
-totalPages = Math.ceil(totalDocs / POSTINGS_PER_PAGE);
+async function initPage(view, postingsPerPage, totalPages) {
+    await populatePage(view, postingsPerPage, 1);
+    await updatePageIndicator(postingsPerPage, 1, totalPages);
+}
 
-function updatePageIndicator() {
+async function getPageCount(postingsPerPage){
+    if(!postingsPerPage){
+        console.log("Missing arg in getPageCount");
+        return;
+    }
+
+    const countSnapshot = await getCountFromServer(collection(db, "postings"));
+    const totalDocs = countSnapshot.data().count;
+    const totalPages = Math.ceil(totalDocs / postingsPerPage);
+    return totalPages;
+}
+
+async function updatePageIndicator(postingsPerPage, currentPage, totalPages) {
+    if(!postingsPerPage || !currentPage){
+        console.log("Missing args in updatePageIndicator");
+        return;
+    }
+
     if (totalPages > 0) {
         document.getElementById("page-indicator").textContent = `${currentPage} / ${totalPages}`;
     } else {
@@ -20,20 +39,4 @@ function updatePageIndicator() {
     }
 }
 
-updatePageIndicator();
-
-document.getElementById("next-btn").addEventListener("click", async () => {
-    if (currentPage < totalPages) {
-        currentPage++;
-        updatePageIndicator();
-        await updatePage(currentPage);
-    }
-});
-
-document.getElementById("prev-btn").addEventListener("click", async () => {
-    if (currentPage > 1) {
-        currentPage--;
-        updatePageIndicator();
-        await updatePage(currentPage);
-    }
-});
+export { viewEnum, initPage, updatePageIndicator, getPageCount }
