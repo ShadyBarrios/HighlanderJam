@@ -14,26 +14,18 @@
   <link rel="stylesheet" href="css/background.css">
 </head>
 <body class="essentials">
-    <div id="top-bar">
-        <div id="top-bar-left">
-            <span>Contact | </span><button id="signout-btn">Sign Out</button>
-        </div>
-
-        <div id="top-bar-center">
-            <h1 id="site-title" onclick="navigateTo('postings.html')" style="cursor: pointer;">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
-        </div>
-
-        <div id="top-bar-right">
-            <button class="nav-btn" id="postings-btn">To All Postings</button>
-        </div>
-    </div>
+  <div id="top-bar">
+      <span id="welcome-msg"></span>
+  </div>
   <div id="form-container">
-    <h2 id="form-title">Send an email to </h2>
+    <h2 id="form-title"></h2>
     <hr>
     <div class="form-group">
       <label for="Message">Message</label>
-      <textarea id="message" maxlength="300" rows="5" placeholder="Introduce yourself!! Clicking send will open a Gmail window for confirmation."></textarea>
+      <textarea id="message" maxlength="300" rows="5" placeholder="Introduce yourself!! Clicking send will initiate a Gmail thread."></textarea>
     </div>
+
+    <i>Identities will be visible to both recipient and sender upon creation of thread.</i>
 
     <div class="form-actions">
       <button id="cancel-send-btn">Cancel</button>
@@ -42,21 +34,18 @@
   </div>
 
   <div class="animated-background" id="animated-background"></div>
+
   <script src="js/background.js"></script>
   <script>
-      document.body.style.visibility = "hidden";
-      document.addEventListener('DOMContentLoaded', function() {
-        addNotesNotClustered();
-        document.body.style.visibility = "visible";
-      });
+    document.body.style.visibility = "hidden";
+    document.addEventListener('DOMContentLoaded', function() {
+      addNotesNotClustered();
+      document.body.style.visibility = "visible";
+    });
   </script>
-  
-  <script>
-        document.getElementById("postings-btn").addEventListener("click", () => {
-            window.location.href = "../postings.html";
-            return;
-        });
-    </script>
+  <script src="js/topbar.js"></script>
+  <script src="js/load.js"></script>
+
   <script type="module" src="js/contact.js"></script>
   <script type="module" src="js/signout.js"></script>
 </body>

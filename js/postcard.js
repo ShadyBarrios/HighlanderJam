@@ -20,7 +20,7 @@ function getHeader(data, id, actions, uid){
     }else{
         return  `
                 <div class="card-header">
-                    <span class="looking-for">${data.postedBy} seeks a <span style="color: rgb(234, 179, 60);">${data.lookingFor}</span>!
+                    <span class="looking-for"><span style="color: rgb(234, 179, 60);">${data.role}</span> &#8226 Looking for a <span style="color: rgb(234, 179, 60);">${data.lookingFor}</span>!
                 </div>
                 <h3>${data.title}</h3>
         `
@@ -29,9 +29,7 @@ function getHeader(data, id, actions, uid){
 
 function getDetails(data){
     const details = `
-    <p>${data.description}</p>
-    <br>
-    <p>Instruments: ${data.instruments}</p>
+    <p class="card-description">${data.description}</p>\
     <p>Experience Lvl: ${data.experience}</p>
     `
 
@@ -40,6 +38,7 @@ function getDetails(data){
 
 
 function getFooter(data, id, actions, uid){
+    const postedBy = data.anon ? "Highlander" : data.postedBy;
     if(actions == headerButtonEnum.AUTHOR){
         return `
                 <div class="card-footer">
@@ -54,7 +53,7 @@ function getFooter(data, id, actions, uid){
         return  `
                 <div class="card-footer">
                     <button class="contact-btn" onclick="navigateTo('contact.html?uid=${uid}')">Contact</button>
-                    <div class="created-date"><p>${date(data.createdAt)}</p></div>      
+                    <div class="created-date"><p>${postedBy} | ${date(data.createdAt)}</p></div>      
                 </div>
         `
     }
@@ -95,7 +94,7 @@ async function populatePage(view, postingsPerPage, currentPage) {
             orderBy("createdAt", "desc")
         );
     }
-    
+
     const snapshot = await getDocs(q);
     const container = document.getElementById("postings-container");
     container.innerHTML = ""; // clear before re-rendering

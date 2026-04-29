@@ -17,13 +17,10 @@ onAuthStateChanged(auth, async (user) => {
 
     const totalPages = await getPageCount(postingsPerPage);
     await initPage(viewEnum.MY_POSTINGS, postingsPerPage, totalPages);
-
-    document.body.style.visibility = "visible";
 });
 
-document.getElementById("postings-btn").addEventListener("click", () => {
-    navigateTo("../postings.html");
-});
+document.getElementById("nav-btn").innerText = "To All Postings";
+document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../postings.html"));
 
 document.getElementById("next-btn").addEventListener("click", async () => {
     const totalPages = await getPageCount(postingsPerPage);

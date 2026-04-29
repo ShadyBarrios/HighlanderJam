@@ -15,7 +15,7 @@ body{
   to   { opacity: 1; }
 }
 
-.nav-btn{
+#nav-btn{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@ body{
   cursor: pointer;
 }
 
-.nav-btn:hover {
+#nav-btn:hover {
   background: rgb(245, 246, 248);
   color:rgb(65, 84, 151);
 }
@@ -74,15 +74,20 @@ body{
 }
 
 #top-bar-left {
+  display:flex;
+  align-items:center;
   justify-self: start;
+  justify-content:space-between;
 }
 
 #top-bar-center {
   justify-self: center;
+  align-items:center;
 }
 
 #top-bar-right {
   justify-self: end;
+  align-items:center;
 }
 
 .bottom-right{
@@ -180,22 +185,21 @@ body{
   border-color: #d64848;
 }
 
-.welcome-text, .desc-text, .looking-for{
+#welcome-text, .desc-text, .looking-for{
   text-align:center;
+}
+
+.seperator{
+  color:rgb(188, 186, 183);
 }
 
 /* DESKOP */
 @media screen and (min-width: 768px) {
-  .nav-btn{
+  #nav-btn{
     gap: 10px;
-    padding: 9px 21px;
+    padding: 0.372em 0.75em;
     font-size: 1.25em; 
     font-weight: 500; 
-  }
-
-  #top-bar {
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 0.1em 0.75em;
   }
 
   #top-bar-left span{
@@ -223,6 +227,8 @@ body{
   .posting-card {
     padding: 0.5rem;
     min-height: 9rem;
+    display:flex;
+    flex-direction:column;
   }
 
   .contact-btn, .edit-btn, .delete-btn {
@@ -249,15 +255,20 @@ body{
     margin-top:0.5em;
     padding-top:0.5em;
   }
+
+  .card-description{
+    padding-bottom:0.5em;
+    flex-grow:1;
+  }
 }
 
 /* PHONE */
 @media screen and (max-width: 767px) {
-  .nav-btn{
+  #nav-btn, #signout-btn{
     gap: 10px;
-    padding: 9px 21px;
-    font-size: 1.25em; 
-    font-weight: 500; 
+    padding: 0.372em 0.75em;
+    font-size:1.1rem;
+    font-weight: 700; 
   }
 
   #top-bar {
@@ -303,19 +314,18 @@ body{
   .posting-card h3{
     margin-top:0,1rem;
   }
-
-  #signout-btn{
-    padding: 0.372em 0.75em;
-    cursor: pointer;
-    font-weight:700;
-  }
-
+  
   #site-title{
     font-size:2.5em;
+    margin: 1.25rem 0rem;
   }
 
   .welcome-text{
-    font-size:1.2em;
+    font-size:1.2rem;
+  }
+
+  #welcome-msg{
+    font-size:1.3rem;
   }
 
   .desc-text{
@@ -329,5 +339,9 @@ body{
   .card-footer{
     margin-top:0.5em;
     padding-top:0.5em;
+  }
+
+  .card-description{
+    padding-bottom:0.5em;
   }
 }

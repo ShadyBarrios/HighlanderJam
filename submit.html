@@ -14,22 +14,19 @@
   <link rel="stylesheet" href="css/background.css">
 </head>
 <body class="essentials">
-    <div id="top-bar">
-        <div id="top-bar-left">
-            <span>Create Posting | </span><button id="signout-btn">Sign Out</button>
-        </div>
-
-        <div id="top-bar-center">
-            <h1 id="site-title" onclick="navigateTo('postings.html')" style="cursor: pointer;">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
-        </div>
-
-        <div id="top-bar-right">
-            <button class="nav-btn" id="profile-btn">To My Postings</button>
-        </div>
-    </div>
+  <div id="top-bar">
+      <span id="welcome-msg"></span>
+  </div>
   <div id="form-container">
-    <h2 id="form-title">New Posting</h2>
+    <h2 id="form-title"></h2>
     <hr>
+    <div class="form-group">
+      <label for="role">Posting as</label>
+      <select id="role">
+        <option value="Musician">Musician</option>
+        <option value="Band">Band</option>
+      </select>
+    </div>
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" id="title" maxlength="40" placeholder="TLDR >-<">
@@ -41,11 +38,6 @@
     </div>
 
     <div class="form-group">
-      <label for="instruments">My Instrument(s)</label>
-      <textarea id="instruments" rows="1" maxlength="40" placeholder="List your instrument(s); vocals count!"></textarea>
-    </div>
-
-    <div class="form-group">
       <label for="lookingFor">Looking For</label>
       <select id="lookingFor">
         <option value="musician">Musician</option>
@@ -54,7 +46,7 @@
       </select>
     </div>
 
-     <div class="form-group">
+     <div class="form-group" id="experience-container">
       <label for="experience">General Experience Level</label>
       <select id="experience">
         <option value="Less than 1 year">Less than 1 year</option>
@@ -64,6 +56,10 @@
       </select>
     </div>
 
+    <div class="form-group">
+      <label for="anon">Anonymous Posting? <input id="anon" type="checkbox"></label>
+    </div>
+
     <div class="form-actions">
       <button id="cancel-btn">Cancel</button>
       <button id="submit-btn">Post</button>
@@ -71,16 +67,18 @@
   </div>
 
   <div class="animated-background" id="animated-background"></div>
+
   <script src="js/background.js"></script>
   <script>
-      document.body.style.visibility = "hidden";
-      document.addEventListener('DOMContentLoaded', function() {
-        addNotesNotClustered();
-        document.body.style.visibility = "visible";
-      });
+    document.body.style.visibility = "hidden";
+    document.addEventListener('DOMContentLoaded', function() {
+      addNotesNotClustered();
+      document.body.style.visibility = "visible";
+    });
   </script>
-
+  <script src="js/topbar.js"></script>
   <script src="./js/load.js"></script>
+
   <script type="module" src="./js/submit.js"></script>
   <script type="module" src="./js/signout.js"></script>
 </body>

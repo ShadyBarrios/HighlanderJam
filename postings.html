@@ -17,17 +17,7 @@
 
 <body class="essentials">
     <div id="top-bar">
-        <div id="top-bar-left">
-            <span id="welcome-msg"></span><button id="signout-btn">Sign Out</button>
-        </div>
-
-        <div id="top-bar-center">
-            <h1 id="site-title" onclick="navigateTo('postings.html')" style="cursor: pointer;" id="title">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
-        </div>
-
-        <div id="top-bar-right">
-            <button class="nav-btn" id="profile-btn">To My Postings</button>
-        </div>
+        <span id="welcome-msg"></span>
     </div>
     <div id="postings-container"></div>
     <div id="pagination">
@@ -37,23 +27,23 @@
     </div>
 
     <div class="animated-background" id="animated-background"></div>
+
     <script src="js/background.js"></script>
+    <script src="js/topbar.js"></script>
     <script>
         document.body.style.visibility = "hidden";
         document.addEventListener('DOMContentLoaded', function() {
             addNotesNotClustered();
             document.body.style.visibility = "visible";
         });
-    </script>
-    
-    <script src="js/load.js"></script>
 
-    <script>
         const displayName = localStorage.getItem("displayName");
         if (displayName) {
-            document.getElementById("welcome-msg").textContent = `Welcome, ${displayName} | `;
+            document.getElementById("welcome-msg").textContent = `Welcome, ${displayName}`;
         }
     </script>
+    <script src="js/load.js"></script>
+
     <script type="module" src="js/pagination.js"></script>
     <script type="module" src="js/postings.js" ></script>
     <script type="module" src="js/signout.js"></script>  

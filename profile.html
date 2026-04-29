@@ -17,17 +17,7 @@
 
 <body class="essentials">
     <div id="top-bar">
-        <div id="top-bar-left">
-            <span>My Postings | </span><button id="signout-btn">Sign Out</button>
-        </div>
-
-        <div id="top-bar-center">
-            <h1 id="site-title" onclick="navigateTo('postings.html')" style="cursor: pointer;">Highlander <span style="color:rgb(234, 179, 60)">Jam</span></h1>
-        </div>
-
-        <div id="top-bar-right">
-            <button class="nav-btn" id="postings-btn">To All Postings</button>
-        </div>
+        <span id="welcome-msg"></span>
     </div>
     <div id="postings-container"></div>
     <div id="pagination">
@@ -47,6 +37,7 @@
     </script>
 
     <script src="js/load.js"></script>
+    <script src="js/topbar.js"></script>
 
     <script type="module" src="js/profile.js"></script>
     <script type="module" src="js/signout.js"></script>  

@@ -25,6 +25,8 @@ onAuthStateChanged(auth, async (user) => {
   document.body.style.visibility = "visible";
 });
 
+document.getElementById("nav-btn").innerText = "To My Postings";
+
 if (!authRan) {
   await initPage();
 }
@@ -45,9 +47,8 @@ window.addEventListener("load", () => {
   });
 });
 
-document.getElementById("cancel-send-btn").addEventListener("click", () => {
-  navigateTo("../postings.html");
-});
+document.getElementById("cancel-send-btn").addEventListener("click", () => navigateTo("../postings.html"));
+document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../postings.html"));
 
 async function initPage() {
   const userDoc = await getDoc(doc(db, "users", uid));
