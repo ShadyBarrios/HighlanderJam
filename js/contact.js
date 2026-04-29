@@ -25,7 +25,7 @@ onAuthStateChanged(auth, async (user) => {
   document.body.style.visibility = "visible";
 });
 
-document.getElementById("nav-btn").innerText = "To My Postings";
+document.getElementById("nav-btn").innerText = "To All Postings";
 
 if (!authRan) {
   await initPage();

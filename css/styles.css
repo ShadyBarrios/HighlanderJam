@@ -185,7 +185,7 @@ body{
   border-color: #d64848;
 }
 
-#welcome-text, .desc-text, .looking-for{
+.welcome-text, .desc-text, .looking-for{
   text-align:center;
 }
 

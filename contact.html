@@ -47,7 +47,7 @@
     const customMediaQuery = window.matchMedia('(max-width: 767px)');
     function customUpdateTopBar(){
       document.getElementById("welcome-msg").innerText = `Contact a Highlander`;
-      document.getElementById("nav-btn").innerText = "To My Postings";
+      document.getElementById("nav-btn").innerText = "To All Postings";
       document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../profile.html"));
     }
     customMediaQuery.addEventListener('change', customUpdateTopBar);
