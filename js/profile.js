@@ -19,8 +19,6 @@ onAuthStateChanged(auth, async (user) => {
     await initPage(viewEnum.MY_POSTINGS, postingsPerPage, totalPages);
 });
 
-document.getElementById("nav-btn").innerText = "To All Postings";
-document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../postings.html"));
 
 document.getElementById("next-btn").addEventListener("click", async () => {
     const totalPages = await getPageCount(postingsPerPage);

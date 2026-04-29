@@ -20,9 +20,6 @@ onAuthStateChanged(auth, async (user) => {
     await initPage(viewEnum.ALL_POSTINGS, postingsPerPage, totalPages);
 });
 
-document.getElementById("nav-btn").innerText = "To My Postings";
-document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../profile.html"));
-
 document.getElementById("next-btn").addEventListener("click", async () => {
     const totalPages = await getPageCount(postingsPerPage);
     if (currentPage < totalPages) {

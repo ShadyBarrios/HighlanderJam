@@ -28,16 +28,26 @@
 
     <div class="animated-background" id="animated-background"></div>
     <script src="js/background.js"></script>
+    <script src="js/topbar.js"></script>
     <script>
         document.body.style.visibility = "hidden";
         document.addEventListener('DOMContentLoaded', function() {
             addNotesNotClustered();
             document.body.style.visibility = "visible";
         });
+
+        // media query defined in previous "topbar" script
+        const customMediaQuery = window.matchMedia('(max-width: 767px)');
+        function customUpdateTopBar(){
+            document.getElementById("welcome-msg").innerText = `My Postings`;
+            document.getElementById("nav-btn").innerText = "To All Postings";
+            document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../postings.html"));
+        }
+        customMediaQuery.addEventListener('change', customUpdateTopBar);
+        customUpdateTopBar();
     </script>
 
     <script src="js/load.js"></script>
-    <script src="js/topbar.js"></script>
 
     <script type="module" src="js/profile.js"></script>
     <script type="module" src="js/signout.js"></script>  

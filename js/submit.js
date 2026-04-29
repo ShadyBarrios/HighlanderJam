@@ -64,9 +64,6 @@ document.getElementById("role").addEventListener("change", () => updateLookingFo
 
 document.getElementById("cancel-btn").addEventListener("click", () => navigateTo("profile.html"));
 
-document.getElementById("nav-btn").innerText = "To My Postings";
-document.getElementById("nav-btn").addEventListener("click", () => navigateTo("profile.html"));
-
 document.getElementById("submit-btn").addEventListener("click", async () => {
     const user = auth.currentUser;
     if (!user) return;

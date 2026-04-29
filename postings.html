@@ -39,8 +39,16 @@
 
         const displayName = localStorage.getItem("displayName");
         if (displayName) {
-            document.getElementById("welcome-msg").textContent = `Welcome, ${displayName}`;
+            document.getElementById("welcome-msg").innerText = `Welcome, ${displayName}`;
         }
+        
+        const customMediaQuery = window.matchMedia('(max-width: 767px)');
+        function customUpdateTopBar(){
+            document.getElementById("nav-btn").innerText = "To My Postings";
+            document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../profile.html"));
+        }
+        customMediaQuery.addEventListener('change', customUpdateTopBar);
+        customUpdateTopBar();
     </script>
     <script src="js/load.js"></script>
 

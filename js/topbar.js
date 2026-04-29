@@ -28,7 +28,7 @@ function updateTopBar(mediaQuery){
     else{   // DESKTOP
         document.getElementById("top-bar").innerHTML = `
             <div id="top-bar-left">
-                <span id="welcome-msg>${welcomeMsg}</span><span class="seperator">&#8226</span><button id="signout-btn">Sign Out</button>
+                <span id="welcome-msg">${welcomeMsg}</span><span class="seperator">&#8226</span><button id="signout-btn">Sign Out</button>
             </div>
 
             <div id="top-bar-center">
