@@ -10,7 +10,9 @@ const headerButtonEnum = Object.freeze({
 });
 
 function getHeader(data, id, actions, uid){
-    // actions = headerButtonEnum.CONTACT;
+    /* FOR SELF TESTING
+    actions = headerButtonEnum.CONTACT;
+    */
     if(actions == headerButtonEnum.AUTHOR){
         return `
                 <div class="card-header">
@@ -37,7 +39,10 @@ function getDetails(data){
 }
 
 
-function getFooter(data, id, actions, uid){
+function getFooter(data, id, actions){
+    /* FOR SELF TESTING
+    actions = headerButtonEnum.CONTACT;
+    */
     const postedBy = data.anon ? "Highlander" : data.postedBy;
     if(actions == headerButtonEnum.AUTHOR){
         return `
@@ -52,7 +57,7 @@ function getFooter(data, id, actions, uid){
     }else{
         return  `
                 <div class="card-footer">
-                    <button class="contact-btn" onclick="navigateTo('contact.html?uid=${uid}')">Contact</button>
+                    <button class="contact-btn" onclick="navigateTo('contact.html?id=${id}')">Contact</button>
                     <div class="created-date"><p>${postedBy} | ${date(data.createdAt)}</p></div>      
                 </div>
         `
@@ -115,12 +120,14 @@ async function populatePage(view, postingsPerPage, currentPage) {
         const data = docSnap.data();
         const card = document.createElement("div");
         const mode = uid == data.uid ? headerButtonEnum.AUTHOR : headerButtonEnum.CONTACT;
-        // const mode = headerButtonEnum.CONTACT;
+        /* FOR SELF TESTING
+        const mode = headerButtonEnum.CONTACT;
+        */
         card.classList.add("posting-card");
         card.innerHTML = `
             ${getHeader(data, docSnap.id, mode, data.uid)}
             ${getDetails(data)}
-            ${getFooter(data, docSnap.id, mode, data.uid)}
+            ${getFooter(data, docSnap.id, mode)}
         `;
         if(mode == headerButtonEnum.AUTHOR){
             card.querySelector(".delete-btn").addEventListener("click", async () => {

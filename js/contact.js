@@ -4,12 +4,12 @@ import { collection, addDoc, getDoc, updateDoc, doc, serverTimestamp, query } fr
 import { signInWithPopup, onAuthStateChanged, GoogleAuthProvider} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import { navigateTo } from "./loadModule.js"; 
 
-let recipient = null;
+let post = null;
 let tokenClient = null;
 let accessToken = null;
 
 const params = new URLSearchParams(window.location.search);
-const uid = params.get("uid");
+const postID = params.get("id");
 
 const CLIENT_ID = "1001246148481-6t7o4ev2gato9eo0jb4s6mrre807a1i3.apps.googleusercontent.com";
 
@@ -51,12 +51,11 @@ document.getElementById("cancel-send-btn").addEventListener("click", () => navig
 document.getElementById("nav-btn").addEventListener("click", () => navigateTo("../postings.html"));
 
 async function initPage() {
-  const userDoc = await getDoc(doc(db, "users", uid));
-  if (userDoc.exists()) {
-    recipient = userDoc.data();
-    const displayName = getDisplayName(recipient.displayName);
-    document.getElementById("form-title").textContent = displayName
-      ? `Send an email to ${displayName}!`
+  const postDoc = await getDoc(doc(db, "postings", postID));
+  if (postDoc.exists()) {
+    post = postDoc.data();
+    document.getElementById("form-title").textContent = post.postedBy
+      ? `Send an email to ${post.postedBy}!`
       : "Send an email to this highlander!";
   } else {
     alert("There's been an error. Code WUT.");
@@ -74,7 +73,7 @@ document.getElementById("send-btn").addEventListener("click", async () => {
     return;
   }
 
-  const confirmed = confirm(`Send this message to ${recipient.displayName || "this highlander"}?`);
+  const confirmed = confirm(`Send this message to ${post.postedBy || "this highlander"}?`);
   if (!confirmed) return;
 
   try {
@@ -96,24 +95,28 @@ document.getElementById("send-btn").addEventListener("click", async () => {
 });
 
 function sendEmail() {
-  const message = document.getElementById("message").value.trim();
+  let message = document.getElementById("message").value.trim();
+  message = `
+  <p>${message}</p>
+  `
   const senderName = localStorage.getItem("displayName") || "A Highlander";
   const subject = `Highlander Jam: Message from ${senderName}`;
-  // const preface = `
-  //   <div style="border-left: 4px solid #4285F4; padding-left: 15px; margin: 10px 0; color: #555;">
-  //     ${message}
-  //   </div>
-  // `;
+  const preface = `
+    <div style="border-left: 4px solid #4285F4; padding-left: 15px; margin: 10px 0; color: #555;">
+      ${post.title}<br>
+      ${post.description}
+    </div>
+  `;
 
 
   // build RFC 2822 email string
   const emailLines = [
-    `To: ${recipient.email}`,
+    `To: ${post.email}`,
     `Subject: ${subject}`,
-    `Content-Type: text/text; charset=utf-8`,
+    `Content-Type: text/html; charset=utf-8`,
     `MIME-Version: 1.0`,
     ``,
-    // preface,
+    preface,
     message,
   ].join("\r\n");
 

@@ -42,14 +42,14 @@ async function initPage(){
 
         const docSnap = await getDoc(doc(db, "postings", editId));
         if (docSnap.exists()) {
-        const data = docSnap.data();
-        document.getElementById("role").value = data.role;
-        document.getElementById("title").value = data.title;
-        document.getElementById("description").value = data.description;
-        // document.getElementById("instruments").value = data.instruments;
-        document.getElementById("lookingFor").value = data.lookingFor;
-        document.getElementById("experience").value = data.experience;
-        document.getElementById("anon").checked = data.anon;
+            const data = docSnap.data();
+            document.getElementById("role").value = data.role;
+            document.getElementById("title").value = data.title;
+            document.getElementById("description").value = data.description;
+            // document.getElementById("instruments").value = data.instruments;
+            document.getElementById("lookingFor").value = data.lookingFor;
+            document.getElementById("experience").value = data.experience;
+            document.getElementById("anon").checked = data.anon;
         }
     }
     else{
