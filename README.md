@@ -2,7 +2,7 @@
 
 A minimalist community posterboard for UCR musicians to connect and collaborate together.
 
-**HighlanderJam** is a web application designed for the UCR Guitar Club to bring musicians together. Whether you're looking for bandmates, jam session partners, or want to showcase your musical talent, Highlander Jam makes it easy to connect with fellow musicians in the UCR community.
+**Highlander Jam** is a web application designed for the UCR Guitar Club to bring musicians together. Whether you're looking for bandmates, jam session partners, or want to showcase your musical talent, Highlander Jam makes it easy to connect with fellow musicians in the UCR community.
 
 ## Features
 
