@@ -224,6 +224,7 @@ Shady was here! Click him...
 ## Credits
 
 Init'd by Scott Gonzalez Barrios, 2026
+
 Made and maintained by The Guitar Club @ UCR
 
 GitHub copilot carried this readme lol.
