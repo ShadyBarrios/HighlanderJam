@@ -34,7 +34,7 @@ A minimalist community posterboard for UCR musicians to connect and collaborate 
 ### My Postings
 | Desktop | Mobile |
 |---------|--------|
-| ![Profile desktop](./docs/screenshots/MyPostings-desktop.png) | ![Profile mobile](./docs/screenshots/MyPostings-mobile.png) |
+| ![Profile desktop](./docs/screenshots/mypostings-desktop.png) | ![Profile mobile](./docs/screenshots/mypostings-mobile.png) |
 
 ### Contact Page
 | Desktop | Mobile |
