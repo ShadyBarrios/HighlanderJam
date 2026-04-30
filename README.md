@@ -77,6 +77,19 @@ HighlanderJam/
 │   ├── loadModule.js       # Navigation utilities
 │   └── utils.js            # Helper functions
 │
+├── docs/
+│   └── screenshots/        # README screenshots (desktop & mobile)
+│       ├── login-desktop.png
+│       ├── login-mobile.png
+│       ├── postings-desktop.png
+│       ├── postings-mobile.png
+│       ├── submit-desktop.png
+│       ├── submit-mobile.png
+│       ├── mypostings-desktop.png
+│       ├── mypostings-mobile.png
+│       ├── contact-desktop.png
+│       └── contact-mobile.png
+│
 ├── resources/ (for easter egg)
 │   ├── images/             # Image assets
 │   └── sounds/             # Audio assets
