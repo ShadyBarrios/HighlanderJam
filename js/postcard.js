@@ -44,7 +44,7 @@ function getFooter(data, id, actions, uid){
                 <div class="card-footer">
                     <div class="card-actions">
                         <button class="edit-btn" onclick="navigateTo('submit.html?id=${id}')">Edit</button>
-                        <button class="delete-btn" data-id="${id}">Del</button>
+                        <button class="delete-btn" data-id="${id}">Delete</button>
                     </div>
                     <div class="created-date"><p>${date(data.createdAt)}</p></div>  
                 </div>

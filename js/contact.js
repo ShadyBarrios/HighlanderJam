@@ -99,13 +99,21 @@ function sendEmail() {
   const message = document.getElementById("message").value.trim();
   const senderName = localStorage.getItem("displayName") || "A Highlander";
   const subject = `Highlander Jam: Message from ${senderName}`;
+  // const preface = `
+  //   <div style="border-left: 4px solid #4285F4; padding-left: 15px; margin: 10px 0; color: #555;">
+  //     ${message}
+  //   </div>
+  // `;
+
 
   // build RFC 2822 email string
   const emailLines = [
     `To: ${recipient.email}`,
     `Subject: ${subject}`,
-    `Content-Type: text/plain; charset=utf-8`,
+    `Content-Type: text/text; charset=utf-8`,
+    `MIME-Version: 1.0`,
     ``,
+    // preface,
     message,
   ].join("\r\n");
 
